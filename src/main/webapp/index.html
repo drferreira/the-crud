@@ -18,6 +18,7 @@
 <div ng-repeat="contact in contacts" class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Contato: {{contact.name}}</h3>
+			<input type="button"  class="button" value="Deletar" ng-click="deleteContact(contact)"/>
 		</div>
 		<div class="panel-body">
 			<ul>

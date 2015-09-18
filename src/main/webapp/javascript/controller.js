@@ -10,4 +10,17 @@ angular.module('theCrud').controller('Controller', function ($scope, $http) {
 		console.log(error);
 	});
 
+	$scope.deleteContact = function (contact) {
+		$http.get('rest/contacts/delete/' + contact.id)
+		.success(function (data) {
+			var contactIndex = $scope.contacts.indexOf(contact);
+			$scope.contacts.splice(contactIndex, 1);
+			console.log($scope.contacts);
+			console.log('Contato (' + contact.id + ') da posição ' + contactIndex + ' deletado!');
+		})
+		.error(function (data) {
+
+		});
+	}
+
 });

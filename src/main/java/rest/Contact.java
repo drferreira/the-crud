@@ -1,11 +1,15 @@
 package main.java.rest;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable {
+
+    private static final long serialVersionUID = -7394335450904627242L;
 
     private Integer id;
     private String name;
     private String phone;
-    
+
     public Contact(Integer id, String name, String phone) {
 	this.id = id;
 	this.name = name;
