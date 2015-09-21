@@ -1,4 +1,4 @@
-package main.java.rest;
+package main.java.thecrud.backend;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,16 +7,22 @@ import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import main.java.thecrud.rest.ContactsResource;
+import main.java.thecrud.rest.UserResource;
+
 @ApplicationPath("thecrud")
 public class TheCrud extends Application {
 
     @Inject
-    private Contacts contactsResource;
+    private ContactsResource contactsResource;
+    @Inject
+    private UserResource userResource;
 
     @Override
     public Set<Class<?>> getClasses() {
 	Set<Class<?>> resources = new HashSet<Class<?>>();
-	resources.add(Contacts.class);
+	resources.add(ContactsResource.class);
+	resources.add(UserResource.class);
 	return resources;
     }
 
@@ -24,6 +30,7 @@ public class TheCrud extends Application {
     public Set<Object> getSingletons() {
 	Set<Object> resources = new HashSet<Object>();
 	resources.add(contactsResource);
+	resources.add(userResource);
 	return resources;
     }
 

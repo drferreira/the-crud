@@ -10,6 +10,17 @@ angular.module('theCrud').controller('Controller', function ($scope, $http) {
 		console.log(error);
 	});
 
+	$scope.login = function (varr) {
+		$http.post('rest/user/login', { msg: 'hello'})
+		.then(function (response) {
+			console.log(response);
+			console.log($scope.email);
+		}, function (response) {
+			console.log(response);
+			console.log('Erro');
+		});
+	}
+
 	$scope.deleteContact = function (contact) {
 		$http.get('rest/contacts/delete/' + contact.id)
 		.success(function (data) {

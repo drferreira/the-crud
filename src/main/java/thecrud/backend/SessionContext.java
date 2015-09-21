@@ -1,4 +1,4 @@
-package main.java.rest;
+package main.java.thecrud.backend;
 
 import java.io.Serializable;
 
