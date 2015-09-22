@@ -7,8 +7,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import main.java.thecrud.backend.ContactDatabase;
 import main.java.thecrud.backend.SessionContext;
+import main.java.thecrud.backend.contact.ContactDatabase;
 
 import com.google.gson.Gson;
 

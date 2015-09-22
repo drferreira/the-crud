@@ -2,17 +2,17 @@ angular.module('theCrud').controller('Controller', function ($scope, $http) {
 	
 	$scope.contacts = [];
 
-	$http.get('rest/contacts')
-	.success(function (data) {
+	$http.get('rest/contacts').success(function (data) {
 		$scope.contacts = data;
-	})
-	.error(function (error) {
+	}).error(function (error) {
 		console.log(error);
 	});
 
-	$scope.login = function (varr) {
-		$http.post('rest/user/login', { msg: 'hello'})
-		.then(function (response) {
+	$scope.login = function () {
+		$http.post('rest/user/login', { 
+			username: $scope.email,
+			password: $scope.password
+		}).then(function (response) {
 			console.log(response);
 			console.log($scope.email);
 		}, function (response) {

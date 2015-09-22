@@ -1,4 +1,4 @@
-package main.java.thecrud.backend;
+package main.java.thecrud.backend.contact;
 
 import java.io.Serializable;
 

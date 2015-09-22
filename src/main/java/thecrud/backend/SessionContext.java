@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Produces;
+
+import main.java.thecrud.backend.contact.ContactDatabase;
+import main.java.thecrud.backend.user.User;
 
 @SessionScoped
 public class SessionContext implements Serializable {
@@ -12,9 +16,20 @@ public class SessionContext implements Serializable {
 
     @Inject
     private ContactDatabase db;
+    private User loggedUser;
 
     public ContactDatabase getDb() {
 	return db;
+    }
+
+    @Produces
+    @LoggedUser
+    public User getLoggedUser() {
+	return loggedUser;
+    }
+
+    public void setLoggedUser(User loggedUser) {
+	this.loggedUser = loggedUser;
     }
 
 }
