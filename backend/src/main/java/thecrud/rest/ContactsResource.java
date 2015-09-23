@@ -19,7 +19,6 @@ public class ContactsResource {
     private SessionContext sessionContext;
 
     @GET
-    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAll() {
 	ContactDatabase db = sessionContext.getDb();

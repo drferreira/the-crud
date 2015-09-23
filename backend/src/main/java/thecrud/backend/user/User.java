@@ -2,7 +2,7 @@ package main.java.thecrud.backend.user;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User implements Serializable, Comparable<User> {
 
     private static final long serialVersionUID = 8294215576978740290L;
 
@@ -24,7 +24,7 @@ public class User implements Serializable {
 	this.name = name;
     }
 
-    public String getUserame() {
+    public String getUsername() {
 	return username;
     }
 
@@ -38,6 +38,16 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
 	this.password = password;
+    }
+
+    @Override
+    public int compareTo(User o) {
+	if (!this.getUsername().equals(o.getUsername()))
+	    return -1;
+	if (!this.getPassword().equals(o.getPassword()))
+	    return -1;
+	
+	return 0;
     }
 
 }

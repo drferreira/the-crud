@@ -1,0 +1,12 @@
+.col-centered {
+	float: none;
+	margin: 0 auto;
+}
+
+#login-form {
+	top: 200px;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}

@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 
 import main.java.thecrud.backend.SessionContext;
 import main.java.thecrud.backend.user.User;
+import main.java.thecrud.backend.user.UserDatabase;
 
 import com.google.gson.Gson;
 
@@ -17,19 +18,20 @@ public class UserResource {
 
     @Inject
     private SessionContext sessionContext;
+    @Inject
+    private UserDatabase userDatabase;
 
     @POST
     @Path("/login")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String login(String loginData) {
-	System.out.println(loginData);
-
 	Gson gson = new Gson();
 	User userToLogin = gson.fromJson(loginData, User.class);
-
-	sessionContext.setLoggedUser(userToLogin);
-
+	
+	User loggedUser = userDatabase.getByLogin(userToLogin.getUsername(), userToLogin.getPassword());
+	sessionContext.setLoggedUser(loggedUser);
+	
 	return gson.toJson(sessionContext.getLoggedUser());
     }
 
