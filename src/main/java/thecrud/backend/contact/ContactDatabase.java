@@ -22,6 +22,7 @@ public class ContactDatabase implements Serializable {
     private Contact contact6 = new Contact(6, "Carolina Nery", "(51) 96124050");
 
     private Map<Integer, Contact> contacts;
+    private Integer nextId;
 
     public ContactDatabase() {
 	if (contacts == null) {
@@ -32,6 +33,7 @@ public class ContactDatabase implements Serializable {
 	    contacts.put(4, contact4);
 	    contacts.put(5, contact5);
 	    contacts.put(6, contact6);
+	    nextId = contacts.size();
 	}
     }
 
@@ -50,6 +52,17 @@ public class ContactDatabase implements Serializable {
 
     public void deleteById(Integer id) {
 	contacts.remove(id);
+    }
+
+    public void insert(Contact newContact) {
+	incrementNextId();
+	newContact.setId(nextId);
+	contacts.put(newContact.getId(), newContact);
+	System.out.println(contacts.get(contacts.size()).getName());
+    }
+    
+    private void incrementNextId() {
+	++nextId;
     }
 
 }

@@ -10,10 +10,12 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import main.java.thecrud.backend.SessionContext;
 
-@WebFilter(urlPatterns = { "/rest/*" })
+@WebFilter(urlPatterns = { "/session/*" })
 public class AuthenticationFilter implements Filter {
 
     @Inject
@@ -26,8 +28,15 @@ public class AuthenticationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
 	    FilterChain filterChain) throws IOException, ServletException {
-
-	filterChain.doFilter(request, response);
+	
+	HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+	
+	if (sessionContext.getLoggedUser() == null && (httpServletRequest.getPathInfo() == null || !httpServletRequest.getPathInfo().contains("/user/login"))) {
+	    HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+	    httpServletResponse.sendRedirect("/thecrud/login.html");
+	} else {
+	    filterChain.doFilter(request, response);
+	}
     }
 
     @Override

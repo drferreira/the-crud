@@ -6,7 +6,7 @@
 	<!-- this need same with resteasy servlet url-pattern -->
 	<context-param>
 		<param-name>resteasy.servlet.mapping.prefix</param-name>
-		<param-value>/rest</param-value>
+		<param-value>/session/rest</param-value>
 	</context-param>
 
 	<servlet>
@@ -20,7 +20,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>resteasy-servlet</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
+		<url-pattern>/session/rest/*</url-pattern>
 	</servlet-mapping>
 
 </web-app>

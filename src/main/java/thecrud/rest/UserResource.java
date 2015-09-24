@@ -2,6 +2,7 @@ package main.java.thecrud.rest;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -27,10 +28,17 @@ public class UserResource {
 
 	Gson gson = new Gson();
 	User userToLogin = gson.fromJson(loginData, User.class);
-
 	sessionContext.setLoggedUser(userToLogin);
+	
+	return gson.toJson("{ loginStatus: 'logged'}");
+    }
 
-	return gson.toJson(sessionContext.getLoggedUser());
+    @GET
+    @Path("/logout")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAll() {
+	sessionContext.setLoggedUser(null);
+	return "{ logout: 'true' }";
     }
 
 }
