@@ -14,12 +14,13 @@
 	<script type="text/javascript" src="javascript/app.js"></script>
 	<script type="text/javascript" src="javascript/login.ctrl.js"></script>
 </head>
-<body class="container-fluid">
+<body class="container-fluid" ng-controller="LoginCtrl">
 	<div class="container" style="margin-top: 200px">
 		<div class="panel panel-default">
-			<div class="panel-heading"><strong>Faz login mano</strong></div>
+			<div class="panel-heading"><strong>{{ tituloForm }}</strong></div>
 			<div class="panel-body">
-				<form ng-controller="LoginCtrl" >
+
+				<form>
 					<div class="form-group">
 						<label for="email-login">Email</label>
 						<input type="email" class="form-control" id="email-login" ng-model="email" placeholder="email@exemplo.com.br" />
@@ -30,6 +31,7 @@
 					</div>
 					<button type="submit" class="btn btn-primary" ng-click="login()">Cadastrar</button>
 				</form>
+
 			</div>
 		</div>
 	</div>
